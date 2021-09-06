@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/diff.js" defer></script>
+  </head>  
+  <body>
+    <h1>Difference in angels</h1>
+
+    <h2>Task:</h2><br><br> 
+    <hr>
+    
+    <p>
+        Write a diff function that takes two angles (integer), each from 0 to 360, and returns the smallest difference between them. 
+    </p>
+    <span>Example:</span>
+    <p class="Example">
+        diff(0, 45) === 45;         // not 315, but 45, because 45 is smaller<br>
+        diff(0, 180) === 180;<br>
+        diff(0, 190) === 170;       // not 190, but 170, because 170 is smaller<br>
+        diff(120, 280) === 160;
+    </p>
+
+    <input type="button" onclick="diff()" value="Find the angle"/>
+
+
+  </body>
+</html>
