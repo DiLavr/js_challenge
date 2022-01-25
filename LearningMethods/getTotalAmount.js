@@ -27,14 +27,41 @@
 // getTotalAmount(money3, 'rub') // 270
 
 
-const money1 = [
+const money1 = ['eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',];
+const money2 = ['eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',];
 
-    'eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',];
+    // сначало убераем значения массива где нет нужного нам значения currence
+    const cur = "rub"; // задаем значение currence
+    const myCompact = (money2) => {
+        const result = [];
+      
+        for (const item of money2) {
+      
+            if (item.slice(0,3) !== cur) {
+            continue;
+          }
+      
+          result.push(item);
+        }
+      
+        return result;
+      };
 
-    const str = money1[0];  
-    console.log(str.slice(0,3));
-    console.log(money1[0].slice(4));
+      console.log (myCompact(money2));
+      
+    //  из полученного массива выделям численные значения и переводим значения из строки в число для последующего сложения
+    const justnumbers = (usdarray) => {
+        const justnumberresult = [];
 
+        for (const item of usdarray) {
+           justnumberresult.push(Number(item.slice(4)));
+        }
+        return justnumberresult;
+    };
+
+
+//    складываем полученное значение
+    
     const Sum = (calculateSum) => {
         // Начальное значение суммы
         let sum = 0;
@@ -47,14 +74,11 @@ const money1 = [
         }
         return sum;
     };
-    
-    
-    const calculateSum1 = [8, 9, 21, 19, 18, 22, 7];
-    const calculateSum2 = [2, 0, 17, 3, 9, 15, 4];
-    const calculateSum3 = [];
-    
-    const res1 = Sum(calculateSum1);
-    const res2 = Sum(calculateSum2);
-    const res3 = Sum(calculateSum3);
 
-    console.log("res1 of: " + calculateSum1 + " = " + res1);
+
+
+ 
+    console.log(Sum(justnumbers(myCompact(money2))));
+
+    
+
