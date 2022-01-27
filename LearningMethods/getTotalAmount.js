@@ -11,74 +11,41 @@
 
 // Примеры
 
-// const money1 = [
-//   'eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',
-// ];
+const money1 = [
+  'eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',
+];
 // getTotalAmount(money1, 'usd') // 16
  
-// const money2 = [
-//   'eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',
-// ];
+const money2 = [
+  'eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',
+];
 // getTotalAmount(money2, 'eur') // 135
  
-// const money3 = [
-//   'eur 10', 'rub 50', 'eur 5', 'rub 10', 'rub 10', 'eur 100', 'rub 200',
-// ];
+const money3 = [
+  'eur 10', 'rub 50', 'eur 5', 'rub 10', 'rub 10', 'eur 100', 'rub 200',
+];
 // getTotalAmount(money3, 'rub') // 270
 
-
-const money1 = ['eur 10', 'usd 1', 'usd 10', 'rub 50', 'usd 5',];
-const money2 = ['eur 10', 'usd 1', 'eur 5', 'rub 100', 'eur 20', 'eur 100', 'rub 200',];
-
-    // сначало убераем значения массива где нет нужного нам значения currence
-    const cur = "rub"; // задаем значение currence
-    const myCompact = (money2) => {
-        const result = [];
+//правельное решение
+ 
+   
+    const getTotalAmount = (money, currency) => {
+        let sum = 0;
       
-        for (const item of money2) {
-      
-            if (item.slice(0,3) !== cur) {
+        for (const bill of money) {
+          const currentCurrency = bill.slice(0, 3); // обрезаем до значения валюты
+          if (currentCurrency !== currency) { //если значение не равно тому, что указанно в параметре функции, то мы пропускаем это значение 
             continue;
           }
-      
-          result.push(item);
+          const denomination = Number(bill.slice(4)); //у пропушенного значения обрезаем в обратную стороны до значение стоимости и переводим оператором Number в цыфровой формат
+          sum += denomination; // складываем сумму и выводим значение 
         }
       
-        return result;
-      };
-
-      console.log (myCompact(money2));
-      
-    //  из полученного массива выделям численные значения и переводим значения из строки в число для последующего сложения
-    const justnumbers = (usdarray) => {
-        const justnumberresult = [];
-
-        for (const item of usdarray) {
-           justnumberresult.push(Number(item.slice(4)));
-        }
-        return justnumberresult;
-    };
-
-
-//    складываем полученное значение
-    
-    const Sum = (calculateSum) => {
-        // Начальное значение суммы
-        let sum = 0;
-        for (let i = 0; i < calculateSum.length; i += 1) {
-            // элементов массива, которые делятся без остатка на 3 (три).
-           
-                // Поочередно складываем все элементы
-                sum += calculateSum[i];
-            
-        }
         return sum;
-    };
+      };
+      
+      export default getTotalAmount;
 
+      console.log(getTotalAmount(money3, 'rub')); // 270
 
-
- 
-    console.log(Sum(justnumbers(myCompact(money2))));
-
-    
 
