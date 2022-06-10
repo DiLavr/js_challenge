@@ -24,3 +24,11 @@ const lesson = {
     name: 'ДеструКТУРИЗАЦИЯ',
     description: 'каК удивитЬ колек',
   };
+
+ function normalize (aaa) {
+  aaa.name = _.capitalize();
+  aaa.description = aaa.description.toLowerCase();
+
+};
+
+  console.log (normalize (lesson));
