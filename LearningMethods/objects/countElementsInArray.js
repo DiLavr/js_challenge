@@ -22,4 +22,4 @@ const bag = [
 
   
 console.log('test');
-  console.log(countFruitsbag);
+  console.log(countFruits(bag));
